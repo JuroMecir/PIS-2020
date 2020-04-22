@@ -9,8 +9,12 @@
         <h1 style="text-align: center">Welcome to trash system that no one will use!</h1>
         <center>
             <p>Currently logged as: {{ current_user.name }} {{ current_user.surname }}</p>
+            {% if number <5 %}
             <p>You now have {{ number }} applications.</p>
             <button type="button" onclick="window.location.href='{{ url_for( 'application' ) }}';">Make application</button>
+            {% else %}
+            <p>You now have 5 applications. Wait for them to be resolved.</p>
+            {% endif %}
         </center>
     </div>
 {% endblock %}
