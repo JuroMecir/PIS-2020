@@ -1,3 +1,4 @@
+import controllers.web_services
 class Student ():
     def __init__(self, id, name, surname, email, password, date_of_birth, address, points, room_id):
         self.id = id
@@ -12,6 +13,8 @@ class Student ():
 
     def get_id(self):
         return self.id
-        #koment
+
+
+
 
 

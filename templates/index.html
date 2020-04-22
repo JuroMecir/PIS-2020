@@ -6,10 +6,14 @@
 
 {% block body %}
     <div class="content">
-        <h1 style="text-align: center">You have no applications</h1>
-            <h4 style="text-align: center">There are no tasks. Create one below!</h4>
-
-        Hi {{ current_user.name }}!
-
+        <h1 style="text-align: center">Welcome to trash system that no one will use!</h1>
+        <center>
+            <p>Currently logged as: {{ current_user.name }} {{ current_user.surname }}</p>
+            <p>You now have {{ number }} applications.</p>
+            <input type="submit" name="submit_button" value="Aom">
+            <form action="application">
+                <button type="submit">Apply for room</button>
+            </form>
+        </center>
     </div>
 {% endblock %}
