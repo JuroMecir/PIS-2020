@@ -5,6 +5,24 @@
     <title>Title</title>
 </head>
 <body>
-paramparam
+<div class="content">
+    <h1 style="text-align: center">Choose your room.</h1>
+    <center>
+        <p>Currently logged as: {{ current_user.name }} {{ current_user.surname }}</p>
+
+        <form method="POST" action="{{ url_for('addApplication') }}">
+            <select name='room_id' >
+                {% for room in rooms %}
+                    <option value= "{{room.id}}" SELECTED>room: {{room.name}}, capacity: {{room.capacity}}, price per month: {{room.price_per_month}}</option>"
+                {% endfor %}
+            </select>
+            <br>
+            <button type="submit" value="Submit">Apply for room</button>
+        </form>
+    </center>
+</div>
+
+
+
 </body>
 </html>

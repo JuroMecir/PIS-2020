@@ -10,10 +10,7 @@
         <center>
             <p>Currently logged as: {{ current_user.name }} {{ current_user.surname }}</p>
             <p>You now have {{ number }} applications.</p>
-            <input type="submit" name="submit_button" value="Aom">
-            <form action="application">
-                <button type="submit">Apply for room</button>
-            </form>
+            <button type="button" onclick="window.location.href='{{ url_for( 'application' ) }}';">Make application</button>
         </center>
     </div>
 {% endblock %}
