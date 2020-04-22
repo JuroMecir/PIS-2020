@@ -1,0 +1,21 @@
+table {
+    box-shadow: 10px 10px 5px grey;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 30px;
+    margin-top: 10px;
+
+}
+
+
+th {
+    background-color: #337ab7 ;
+    color: white
+}
+
+td, th {
+
+    text-align: left;
+    padding: 8px;
+}

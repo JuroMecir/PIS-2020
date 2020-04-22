@@ -31,7 +31,7 @@ def login():
         for student in ws.students.service.getAll():
             if form.email.data == student.email and form.password.data == student.password:
                 flash('You have been logged in!', 'success')
-                test = Student(student.id, student.name, student.surname, student.email, student.password, student.date_of_birth, student.address, student.points, student.room_id)
+                test = Student(student.id, student.name, student.surname, student.email, student.password, student.date_of_birth, student.address, student.points, student.room_id, student.phone_number)
                 login_user(test, force=True)
                 return redirect(url_for('dashboard'))
         flash('Login Unsuccessful. Please check username and password', 'danger')
@@ -41,12 +41,19 @@ def login():
 @app.route("/dashboard", methods=['GET', 'POST'])
 def dashboard():
     ws = Web_service()
-    number = 0
+    numbers = []
+    your_rooms =[]
     if ws.applications.service.getAll():
         for application in ws.applications.service.getAll():
             if application.student_id == current_user.id:
-                number += 1
-    return render_template('index.html', number = number)
+                numbers.append(application.room_id)
+
+    if ws.rooms.service.getAll():
+        for room in ws.rooms.service.getAll():
+            if room.id in numbers:
+                your_rooms.append(room)
+
+    return render_template('index.html', rooms = your_rooms, rooms_count = len(your_rooms))
 
 @app.route("/application",methods=['GET','POST'])
 def application():
@@ -85,6 +92,9 @@ def addApplication():
             'student_id': current_user.id,
             'room_id': room_id
         })
+
+        ws.email.service.notify(team_id='093', password='FV45AJ', email = current_user.email, subject = 'Application successfully added', message = 'your application has been successfully added')
+        ws.sms.service.notify(team_id='093', password='FV45AJ', phone = current_user.phone_number, subject = 'Application successfully added', message = 'your application has been successfully added')
     return redirect("/dashboard")
 
 

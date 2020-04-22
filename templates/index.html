@@ -9,12 +9,34 @@
         <h1 style="text-align: center">Welcome to trash system that no one will use!</h1>
         <center>
             <p>Currently logged as: {{ current_user.name }} {{ current_user.surname }}</p>
-            {% if number <5 %}
-            <p>You now have {{ number }} applications.</p>
+            {% if rooms_count < 5 %}
+            <p>You now have {{ rooms_count }} applications.</p>
             <button type="button" onclick="window.location.href='{{ url_for( 'application' ) }}';">Make application</button>
             {% else %}
             <p>You now have 5 applications. Wait for them to be resolved.</p>
             {% endif %}
+            <div class='container'>
+                <center>
+                    <b>Your applications</b>
+                    <br>
+                    <body>
+                    <table style="width:50%">
+                        <tr>
+                            <th>Room name</th>
+                            <th>Capacity</th>
+                            <th>Price for month</th>
+                            {% for room in rooms %}
+                        <tr>
+                            <td> {{ room.name }} </td>
+                            <td> {{ room.capacity }}</td>
+                            <td> {{ room.price_per_month }}</td>
+                        </tr>
+                            {% endfor %}
+                        </tr>
+                    </table>
+                    </body>
+                </center>
+            </div>
         </center>
     </div>
 {% endblock %}
