@@ -56,7 +56,7 @@ def dashboard():
     return render_template('index.html', rooms = your_rooms, rooms_count = len(your_rooms))
 
 @app.route("/application",methods=['GET','POST'])
-def application():
+def application(message=None):
     ws = Web_service()
     rooms = []
     your_app = []
@@ -78,23 +78,32 @@ def application():
                             temp+=1
                     if temp == 0 :
                         rooms.append(room)
-
-    return render_template('application.html', rooms=rooms)
+    if message:
+        return render_template('application.html', rooms=rooms, message=message)
+    else:
+        return render_template('application.html', rooms=rooms)
 
 @app.route("/addApplication",methods=['GET','POST'])
 def addApplication():
     ws = Web_service()
-    if request.method == 'POST':
-        room_id = request.form['room_id']
-        ws.applications.service.insert(team_id='093', team_password='FV45AJ', Application={
-            'id': 1,
-            'name': 'application',
-            'student_id': current_user.id,
-            'room_id': room_id
-        })
+    date_from = request.form['from_date']
+    date_to = request.form['to_date']
+    if ws.calendar.service.isWeekend(datetime=date_from) or ws.calendar.service.isWeekend(datetime=date_to):
+        return application('You shall not pass!!!')
+    else:
+        if request.method == 'POST':
+            room_id = request.form['room_id']
+            ws.applications.service.insert(team_id='093', team_password='FV45AJ', Application={
+                'id': 1,
+                'name': 'application',
+                'student_id': current_user.id,
+                'room_id': room_id,
+                'date_from': date_from,
+                'date_to': date_to
+            })
 
-        ws.email.service.notify(team_id='093', password='FV45AJ', email = current_user.email, subject = 'Application successfully added', message = 'your application has been successfully added')
-        ws.sms.service.notify(team_id='093', password='FV45AJ', phone = current_user.phone_number, subject = 'Application successfully added', message = 'your application has been successfully added')
+            ws.email.service.notify(team_id='093', password='FV45AJ', email = current_user.email, subject = 'Application successfully added', message = 'your application has been successfully added')
+            ws.sms.service.notify(team_id='093', password='FV45AJ', phone = current_user.phone_number, subject = 'Application successfully added', message = 'your application has been successfully added')
     return redirect("/dashboard")
 
 

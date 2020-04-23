@@ -6,6 +6,9 @@
 </head>
 <body>
 <div class="content">
+    {% if message %}
+        <h1 style="text-align:center;color:red">{{message}}</h1>
+    {% endif %}
     <h1 style="text-align: center">Choose your room.</h1>
     <center>
         <p>Currently logged as: {{ current_user.name }} {{ current_user.surname }}</p>
@@ -16,6 +19,12 @@
                     <option value= "{{room.id}}" SELECTED>room: {{room.name}}, capacity: {{room.capacity}}, price per month: {{room.price_per_month}}</option>"
                 {% endfor %}
             </select>
+            <br>
+            <label for="from_date">Accommodation from:</label>
+            <input type="date" id="from_date" name="from_date">
+            <br>
+            <label for="to_date">Accommodation to:</label>
+            <input type="date" id="to_date" name="to_date">
             <br>
             <button type="submit" value="Submit">Apply for room</button>
         </form>
