@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
+<body style="background-color: antiquewhite;">
 <div class="content">
     {% if message %}
         <h1 style="text-align:center;color:red">{{message}}</h1>
     {% endif %}
-    <h1 style="text-align: center">Choose your room.</h1>
+    <h1 style="text-align: center; font-size: 300%;">Room choice.</h1>
+    <h2 style="text-align: center; font-size: 170%;">You can choose the rooms you want to sign up for.</h2>
     <center>
         <p>Currently logged as: {{ current_user.name }} {{ current_user.surname }}</p>
+        <br>
+        <b>Choose the room:</b>
 
         <form method="POST" action="{{ url_for('addApplication') }}">
             <select name='room_id' >
@@ -20,18 +23,19 @@
                 {% endfor %}
             </select>
             <br>
+            <br>
             <label for="from_date">Accommodation from:</label>
             <input type="date" id="from_date" name="from_date">
             <br>
             <label for="to_date">Accommodation to:</label>
             <input type="date" id="to_date" name="to_date">
             <br>
-            <button type="submit" value="Submit">Apply for room</button>
+            <br>
+            <br>
+            <button style="font-size: larger;" type="submit" value="Submit">Apply for room</button>
         </form>
     </center>
 </div>
-
-
 
 </body>
 </html>
