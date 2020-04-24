@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% block body %}
     <div class="content-section">
+        <center>
         <form method="POST" action="">
             {{ form.hidden_tag() }}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Log In</legend>
-                <div class="form-group">
+            <fieldset class="form-group" style="border: 0;">
+                <h1 style="text-align: center; font-size: 300%;">Log In</h1>
+                <div class="form-group" style="font-size: 130%;">
                     {{ form.email.label(class="form-control-label") }}
                     {% if form.email.errors %}
                         {{ form.email(class="form-control form-control-lg is-invalid") }}
@@ -18,7 +19,8 @@
                         {{ form.email(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
-                <div class="form-group">
+                <br>
+                <div class="form-group" style="font-size: 130%;">
                     {{ form.password.label(class="form-control-label") }}
                     {% if form.password.errors %}
                         {{ form.password(class="form-control form-control-lg is-invalid") }}
@@ -31,11 +33,13 @@
                         {{ form.password(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
+                <br>
 
             </fieldset>
-            <div class="form-group">
+            <div class="form-group;">
                 {{ form.submit(class="btn btn-outline-info") }}
             </div>
         </form>
+        </center>
     </div>
 {% endblock body %}
