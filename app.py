@@ -88,8 +88,12 @@ def addApplication():
     ws = Web_service()
     date_from = request.form['from_date']
     date_to = request.form['to_date']
-    if ws.calendar.service.isWeekend(datetime=date_from) or ws.calendar.service.isWeekend(datetime=date_to):
-        return application('You shall not pass!!!')
+    if not date_from or not date_to:
+        return application('Accommodation dates cannot be null.')
+    elif date_from > date_to:
+        return application('Accommodation from cannot be after accommodation to.')
+    elif ws.calendar.service.isWeekend(datetime=date_from) or ws.calendar.service.isWeekend(datetime=date_to):
+        return application('Accommodation dates cannot be during the weekend.')
     else:
         if request.method == 'POST':
             room_id = request.form['room_id']
