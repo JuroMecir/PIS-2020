@@ -1,51 +1,45 @@
 {% extends "base.html" %}
 {% block body %}
-    <div class="row">
-        <div class="container">
-            <div class="content-section">
-                <center>
-                <form method="POST" action="">
-                    {{ form.hidden_tag() }}
-                    <fieldset class="form-group" style="border: 0;">
-                        <h1 style="text-align: center; font-size: 300%;">Log In</h1>
-                        <div class="form-group" style="font-size: 130%;">
-                            {{ form.email.label(class="form-control-label") }}
-                            <br>
-                            {% if form.email.errors %}
-                                {{ form.email(class="form-control form-control-lg is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.email.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.email(class="form-control form-control-lg") }}
-                            {% endif %}
+    <div class="wrapper">
+        <center>
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <form class="form">
+                <br>
+                <h1 style="text-align: center; font-size: 300%;">Log In</h1>
+                <br>
+                <div class="form" style="font-size: 130%;">
+                    {{ form.email.label(class="form-control-label") }}
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
                         </div>
-                        <br>
-                        <div class="form-group" style="font-size: 130%;">
-                            {{ form.password.label(class="form-control-label") }}
-                            <br>
-                            {% if form.password.errors %}
-                                {{ form.password(class="form-control form-control-lg is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.password.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.password(class="form-control form-control-lg") }}
-                            {% endif %}
+                    {% else %}
+                        {{ form.email(class="form-control form-control-lg") }}
+                    {% endif %}
+                <br>
+                    {{ form.password.label(class="form-control-label") }}
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
                         </div>
-                        <br>
-
-                    </fieldset>
-                    <div class="form-group;">
-                        {{ form.submit(class="btn btn-outline-info") }}
-                    </div>
-                </form>
-                </center>
-            </div>
-        </div>
+                    {% else %}
+                        {{ form.password(class="form-control form-control-lg") }}
+                    {% endif %}
+                    <br>
+                    {{ form.submit(class="btn btn-outline-info") }}
+                   
+                </div>
+                <br>
+            </form>
+            
+        </form>
+        </center>
     </div>
 {% endblock body %}
