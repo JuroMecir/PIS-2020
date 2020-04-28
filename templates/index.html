@@ -5,43 +5,45 @@
 {% endblock %}
 
 {% block body %}
-    <div class="content">
-        <h1 style="text-align: center; font-size: 300%;">Welcome to the accommodation system!</h1>
-        <h2 style="text-align: center; font-size: 170%;">You can now make your application.</h2>
-        <center>
-            <p>Currently logged as: {{ current_user.name }} {{ current_user.surname }}</p>
-            {% if rooms_count < 5 %}
-            <br>
-            <p>You now have {{ rooms_count }} applications.</p>
-            <button type="button" style=" font-size: larger;" onclick="window.location.href='{{ url_for( 'application' ) }}';">Make application</button>
-            {% else %}
-            <p>You now have 5 applications. Wait for them to be resolved.</p>
-            {% endif %}
-            <div class='container'>
-                <center>
-                    <br>
-                    <br>
-                    <b style="font-size: 130%;">Your applications</b>
-                    <br>
-                    <body>
-                    <table style="width:50%">
-                        <tr>
-                            <th>Room name</th>
-                            <th>Capacity</th>
-                            <th>Price for month</th>
-                            {% for room in rooms %}
-
-                        <tr>
-                            <td> {{ room.name }} </td>
-                            <td> {{ room.capacity }}</td>
-                            <td> {{ room.price_per_month }}</td>
-                        </tr>
-                            {% endfor %}
-                        </tr>
-                    </table>
-                    </body>
-                </center>
-            </div>
-        </center>
+    <div class="wrapper">
+        <h1 style="text-align: center; font-size: 300%; font-weight:normal; font-family: Arial, sans-serif;">Welcome to the accommodation system!</h1>
+        <br>
+        <div class="container">   
+            <h2 style="text-align: center; font-size: 170%; font-weight:normal; font-family: Arial, sans-serif;">You can now make your application.</h2>
+            <center>
+                <p style="font-size: 17px; font-weight:normal; font-family: Arial, sans-serif;">Currently logged as: {{ current_user.name }} {{ current_user.surname }}</p>
+                {% if rooms_count < 5 %}
+                <br>
+                <p style="font-size: 17px; font-weight:normal; font-family: Arial, sans-serif;">You now have {{ rooms_count }} applications.</p>
+                <button type="button" style=" font-size: larger;" onclick="window.location.href='{{ url_for( 'application' ) }}';">Make application</button>
+                {% else %}
+                <p style="font-size: 17px; font-weight:normal; font-family: Arial, sans-serif;">You now have 5 applications. Wait for them to be resolved.</p>
+                {% endif %}
+                <div class='container'>
+                    <center>
+                        <br>
+                        <br>
+                        <b style="font-size: 130%;">Your applications</b>
+                        <br>
+                        <body>
+                        <table style="width:60%">
+                            <tr>
+                                <th>Room name</th>
+                                <th>Capacity</th>
+                                <th>Price for month</th>
+                                {% for room in rooms %}
+                            <tr>
+                                <td> {{ room.name }} </td>
+                                <td> {{ room.capacity }}</td>
+                                <td> {{ room.price_per_month }}</td>
+                            </tr>
+                                {% endfor %}
+                            </tr>
+                        </table>
+                        </body>
+                    </center>
+                </div>
+            </center>
+        </div>
     </div>
 {% endblock %}
