@@ -94,6 +94,8 @@ def addApplication():
         return application('Accommodation from cannot be after accommodation to.')
     elif ws.calendar.service.isWeekend(datetime=date_from) or ws.calendar.service.isWeekend(datetime=date_to):
         return application('Accommodation dates cannot be during the weekend.')
+    elif ws.calendar.service.getCurrentDate() > date_from:
+        return application('Accommodation dates cannot be before today.')
     else:
         if request.method == 'POST':
             room_id = request.form['room_id']
