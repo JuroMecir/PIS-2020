@@ -8,12 +8,12 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     {% block head %}{% endblock %}
 </head>
-<body style="background-color: antiquewhite;">
+<body style="background-color: white;">
 {% with messages = get_flashed_messages() %}
     {% if messages %}
-        <ul class="flashes">
+        <ul class="flashes" style="font-size: 17px; font-weight:normal; font-family: Arial, sans-serif;">
             {% for message in messages %}
-                <div class="message_flash">{{ message }}</div>
+                <div class="message_flash" style="font-size: 17px; font-weight:normal; font-family: Arial, sans-serif;">{{ message }}</div>
             {% endfor %}
         </ul>
     {% endif %}
