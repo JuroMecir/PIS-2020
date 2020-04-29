@@ -8,14 +8,35 @@ table {
 
 }
 
-
 th {
     background-color: #337ab7 ;
     color: white
 }
 
 td, th {
-
     text-align: left;
     padding: 8px;
 }
+
+.wrapper {	
+	margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.form {
+  max-width: 400px;
+  padding: 20px 40px 50px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.1);  
+}
+
+.form_w {
+  max-width: 800px;
+  padding: 20px 40px 50px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.1);  
+}
+
+
