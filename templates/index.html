@@ -19,6 +19,8 @@
                 {% else %}
                 <p style="font-size: 17px; font-weight:normal; font-family: Arial, sans-serif;">You now have 5 applications. Wait for them to be resolved.</p>
                 {% endif %}
+                {%  if rooms_count != 0 %}
+
                 <div class='container'>
                     <center>
                         <br>
@@ -43,6 +45,7 @@
                         </body>
                     </center>
                 </div>
+            {% endif %}
             </center>
         </div>
     </div>

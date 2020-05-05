@@ -11,9 +11,9 @@
 <body style="background-color: white;">
 {% with messages = get_flashed_messages() %}
     {% if messages %}
-        <ul class="flashes" style="font-size: 17px; font-weight:normal; font-family: Arial, sans-serif;">
+        <ul class="flashes">
             {% for message in messages %}
-                <div class="message_flash" style="font-size: 17px; font-weight:normal; font-family: Arial, sans-serif;">{{ message }}</div>
+                <div class="message_flash">{{ message }}</div>
             {% endfor %}
         </ul>
     {% endif %}
